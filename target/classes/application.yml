@@ -1,0 +1,32 @@
+spring:
+  application:
+    name:     
+    
+server:
+  port: 8662
+
+    
+ribbon:
+  ReadTimeout: 2000000
+  
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 2000000
+            
+zuul:
+  host:
+    connect-timeout-millis: 50000000
+    socket-timeout-millis: 50000000
+  ignoredServices: '*'
+  routes:
+    jwt-service:
+      path: /citi/jwt/test/pdf/**
+      serviceId: test-service-jwt
+      stripPrefix: false
+   
+  
+ 
